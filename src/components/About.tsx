@@ -48,9 +48,9 @@ export default function About() {
         <div
           className="side-float"
           style={{
-            opacity: 0.22,
+            opacity: 0.45,
             mixBlendMode: 'multiply',
-            filter: 'brightness(1.2) contrast(1.35)',
+            filter: 'brightness(1.18) contrast(1.3)',
           }}
         >
           <Image
