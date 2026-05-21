@@ -1,0 +1,167 @@
+export const content = {
+  name: { first: 'Gopikrishnan', last: 'Balagopal' },
+  tagline: 'Full-stack developer · Kerala, India',
+  bio: '23. Kerala-based. I build products end to end — WebRTC calling systems, payment flows, carbon platforms, migration pipelines. I care about shipping things that actually work.',
+  email: 'gopikrishnanb2003@gmail.com',
+  github: 'https://github.com/Gopi-krishnan-77',
+  linkedin: 'https://linkedin.com/in/gopikrishnanbalagopal',
+
+  experience: [
+    {
+      company: 'Cooee',
+      role: 'Graduate Software Engineer · Full Stack',
+      period: 'Sept 2025 – Present',
+      current: true,
+      bullets: [
+        'Engineered production-grade international calling flows using WebRTC, socket signaling, and Telnyx for global users',
+        'Built international calling, subscription flows, travel data services, and auto top-ups shipped to thousands of users',
+        'Developed backend APIs and services in Go for scalable product integrations',
+        'Owned major frontend modules in React, Next.js, Tailwind, and Firebase',
+        'Led end-to-end migration of internal support system to DevRev — tool evaluation (Gleap vs DevRev), data modelling, API integration design, and migration scripting in Go across PostgreSQL and DevRev\'s REST APIs',
+        'Led WordPress → Next.js migration of marketing website with Sanity CMS, country-specific pages, and SEO improvements',
+        'Implemented GA4 instrumentation across marketing and product surfaces',
+      ],
+    },
+    {
+      company: 'Benfi Consultants Pte Ltd',
+      role: 'Software Developer Intern',
+      period: 'Jul 2024 – Nov 2024',
+      current: false,
+      bullets: [
+        'Built and optimised backend APIs using Django for internal business intelligence workflows',
+        'Evaluated LLMs (Qwen series) for automating analytics and reporting workflows',
+        'Contributed to early prototypes of an AI-driven home assistant',
+      ],
+    },
+    {
+      company: 'Intel Unnati',
+      role: 'Industrial Trainee',
+      period: '2023',
+      current: false,
+      bullets: [
+        'Selected for Intel\'s industry-academia training programme',
+        'Worked on a guided industrial project applying ML and systems concepts to real-world problem statements',
+      ],
+    },
+    {
+      company: 'EXCEL Saintgits',
+      role: 'Treasurer',
+      period: '2024 – 2025',
+      current: false,
+      bullets: [
+        'Managed financial operations and budgeting for the student technical association',
+        'Coordinated cross-department technical events and ensured smooth on-ground execution',
+      ],
+    },
+  ],
+
+  projects: [
+    {
+      id: 'callcheck',
+      title: 'CallCheck',
+      subtitle: 'Is your network ready for VoIP?',
+      description: 'A free in-browser tool that tests latency, jitter, packet loss and MOS score. Built from real WebRTC experience at Cooee.',
+      metrics: [
+        { label: 'Latency', value: 24, suffix: 'ms', decimals: 0 },
+        { label: 'Jitter', value: 3.2, suffix: 'ms', decimals: 1 },
+        { label: 'Packet Loss', value: 0.4, suffix: '%', decimals: 1 },
+        { label: 'MOS Score', value: 4.5, suffix: '', decimals: 1 },
+      ],
+      cta: { label: 'Visit site →', href: 'https://callcheck.gopikrishnanb.co.in' },
+      style: 'dark',
+    },
+    {
+      id: 'decarb',
+      title: 'DeCarb',
+      subtitle: 'Carbon credit marketplace',
+      description: 'Decentralised platform for transparent carbon credit trading. Web3Auth wallet onboarding, Razorpay fiat payments, Toucan-based retirement certificates.',
+      awards: ['🏆 Finalist — SIGHT 2.0', '🏆 Runner-up — BlockHash LIVE'],
+      stack: ['Next.js', 'Solidity', 'Web3Auth', 'Razorpay'],
+      github: 'https://github.com/DeCarb-Marketplace',
+      style: 'cream',
+    },
+    {
+      id: 'tedx',
+      title: 'TEDx Saintgits',
+      description: 'Official TEDx event site — responsive UI and ticketing workflows.',
+      stack: ['Next.js', 'Firebase'],
+      github: 'https://github.com/basilrari/tedxsaintgits',
+      style: 'white',
+    },
+    {
+      id: 'alerteye',
+      title: 'AlertEye',
+      description: 'Real-time driver drowsiness detection using facial landmark detection and OpenCV.',
+      stack: ['Python', 'OpenCV'],
+      github: 'https://github.com/Gopi-krishnan-77/Alert-Eye',
+      style: 'grey',
+    },
+    {
+      id: 'edufinease',
+      title: 'EduFinEase',
+      subtitle: 'Educational finance, simplified',
+      description: 'Financial management system for educational institutions — student fee tracking, payment workflows, and reporting dashboards for admins and parents.',
+      stack: ['React', 'Node.js', 'Firebase'],
+      github: 'https://github.com/EduFinEase',
+      style: 'mint',
+    },
+    {
+      id: 'kdrama',
+      title: 'KDrama Insights',
+      subtitle: 'Data-driven analytics dashboard',
+      description: 'Analytics dashboard for Korean drama trends and viewer preferences. Python preprocessing pipelines feeding IBM Cognos visualisations to surface popularity patterns and audience demographics.',
+      stack: ['Python', 'IBM Cognos', 'Data Analytics'],
+      github: 'https://github.com/Gopi-krishnan-77/ibm-cognos',
+      style: 'violet',
+    },
+    {
+      id: 'deex3',
+      title: 'DeEx3 DAO',
+      subtitle: 'Decentralised research collaboration',
+      description: 'A DAO platform where researchers publish, peer-review, and collaborate transparently. Solidity smart contracts, IPFS storage, and Web3 wallet integration power a community-driven scientific commons.',
+      stack: ['Solidity', 'React', 'Web3', 'IPFS'],
+      github: 'https://github.com/orgs/DeEx3-DAO/repositories',
+      style: 'indigo',
+    },
+  ],
+
+  stack: [
+    'React', 'Redux', 'Go', 'WebRTC', 'Telnyx', 'Stripe',
+    'Firebase', 'Auth0', 'Sanity CMS', 'Next.js','JavaScript',
+    'TypeScript', 'Django', 'PostgreSQL', 'Solidity', 'Python',
+    'WebSockets', 'GA4', 'Tailwind CSS', 'Express.js',
+  ],
+
+  awards: [
+    {
+      icon: '🏆',
+      title: 'Runner-up — Web3 for India 2030 Ideathon',
+      sub: 'BlockHash LIVE, Kerala Blockchain Academy · 2023',
+    },
+    {
+      icon: '🏆',
+      title: 'Finalist — SIGHT 2.0',
+      sub: 'UST Global Hackathon · 2024',
+    },
+    {
+      icon: '📄',
+      title: 'Research Publication — "Security in Metaverse"',
+      sub: 'Springer CCIS, ICAISM 2025',
+    },
+    {
+      icon: '🌐',
+      title: 'Project Showcase — ETHIndia 2023',
+      sub: 'India\'s biggest Ethereum hackathon',
+    },
+    {
+      icon: '🎖️',
+      title: 'Special Recognition Award',
+      sub: 'Saintgits CSE Department — outstanding contributions',
+    },
+    {
+      icon: '🏏',
+      title: 'Captain — Saintgits College Cricket Team',
+      sub: 'Led team to inter-college tournaments',
+    },
+  ],
+}

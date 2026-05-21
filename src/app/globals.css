@@ -3,25 +3,90 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --green: #00E87A;
+  --orange: #FF5C1A;
+  --dark: #0F0F0F;
+  --cream: #FAFAF8;
+  --grey: #E8E4DF;
+  --dark-green: #0A2318;
+  --light-green: #C8F5E0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
 }
 
+@media (pointer: fine) {
+  * { cursor: none; }
+}
+
+@media (pointer: coarse) {
+  * { cursor: auto; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.cursor-blink { animation: blink 1s infinite; }
+
+/* Skill pill hover — replaces framer-motion whileHover */
+.pill-hover:hover {
+  border-color: #00E87A !important;
+  box-shadow: 0 6px 20px rgba(0, 232, 122, 0.22);
+  transform: scale(1.08);
+}
+
+/* Project card hover — subtle lift (replaces framer-motion whileHover scale) */
+.card-hover {
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+.card-hover:hover {
+  transform: scale(1.015);
+  box-shadow: 0 10px 32px rgba(15, 15, 15, 0.08);
+}
+
+/* Floating diya flame flicker — subtle pulse, slightly offset between groups */
+@keyframes diya-flicker {
+  0%, 100% { opacity: 1; transform: translateY(0); }
+  40%      { opacity: 0.55; transform: translateY(-1px); }
+  60%      { opacity: 0.85; transform: translateY(0.5px); }
+}
+.diya-flicker-a { animation: diya-flicker 3.4s ease-in-out infinite; transform-origin: center; }
+.diya-flicker-b { animation: diya-flicker 4.1s ease-in-out infinite 0.6s; transform-origin: center; }
+
+/* Motif float — hero elephant centered */
+@keyframes motif-float {
+  0%   { transform: translate(-50%, -50%) translateY(0px) scale(1); }
+  50%  { transform: translate(-50%, -50%) translateY(-20px) scale(1.025); }
+  100% { transform: translate(-50%, -50%) translateY(0px) scale(1); }
+}
+.motif-float {
+  animation: motif-float 9s ease-in-out infinite;
+}
+
+/* Side/corner motifs — gentle vertical drift only */
+@keyframes side-float {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-16px); }
+  100% { transform: translateY(0px); }
+}
+.side-float { animation: side-float 11s ease-in-out infinite; }
+.side-float-slow { animation: side-float 14s ease-in-out infinite; }
+.side-float-fast { animation: side-float 8s ease-in-out infinite; }
+
+@keyframes hero-fadein {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-content { animation: hero-fadein 0.7s ease-out 0.05s both; }
+.hero-name    { animation: hero-fadein 0.7s ease-out 0.1s both; }
+.hero-subtitle { animation: hero-fadein 0.6s ease-out 0.45s both; }
+
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+  .text-balance { text-wrap: balance; }
 }
