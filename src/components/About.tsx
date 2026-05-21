@@ -34,23 +34,23 @@ export default function About() {
         </div>
       </div>
 
-      {/* Kathakali — mobile: behind builder text */}
+      {/* Kathakali — mobile: centred behind content but very faint so the bio stays readable */}
       <div
         className="md:hidden absolute pointer-events-none select-none"
         style={{
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          width: 'min(85vw, 380px)',
+          width: 'min(82vw, 360px)',
           zIndex: 0,
         }}
       >
         <div
           className="side-float"
           style={{
-            opacity: 0.7,
+            opacity: 0.22,
             mixBlendMode: 'multiply',
-            filter: 'brightness(1.12) contrast(1.25)',
+            filter: 'brightness(1.2) contrast(1.35)',
           }}
         >
           <Image
