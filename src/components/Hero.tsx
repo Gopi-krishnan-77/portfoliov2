@@ -16,12 +16,12 @@ export default function Hero() {
     >
       {/* Kerala mural elephant — centered, CSS float animation */}
       <div
-        className="motif-float w-[170vw] md:w-[110vw] lg:w-[96vw]"
+        className="motif-float"
         style={{
           position: 'absolute',
           top: '50%',
           left: '50%',
-          maxWidth: '1320px',
+          width: 'clamp(560px, 140vw, 1320px)',
           opacity: 0.55,
           mixBlendMode: 'multiply',
           filter: 'brightness(1.12) contrast(1.25)',
