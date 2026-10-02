@@ -1,42 +1,23 @@
-'use client'
 import Image from 'next/image'
+import { content } from '@/lib/content'
 
 export default function Hero() {
   return (
-    <section
-      style={{
-        position: 'relative',
-        minHeight: '100vh',
-        backgroundColor: '#ffffff',
-        overflow: 'hidden',
-        display: 'flex',
-        alignItems: 'center',
-        paddingTop: '80px',
-      }}
-    >
-      {/* Kerala mural elephant — centered, CSS float animation */}
+    <section className="hero-height relative flex items-center overflow-hidden bg-white pt-20">
+      {/* Kerala mural elephant — centered, CSS float animation. The image has a
+          transparent background, so no blend-mode/filter tricks are needed. */}
       <div
-        className="motif-float"
-        style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          width: 'clamp(560px, 140vw, 1320px)',
-          opacity: 0.55,
-          mixBlendMode: 'multiply',
-          filter: 'brightness(1.12) contrast(1.25)',
-          zIndex: 0,
-          pointerEvents: 'none',
-          userSelect: 'none',
-        }}
+        className="motif-float pointer-events-none absolute left-1/2 top-1/2 z-0 select-none opacity-55"
+        style={{ width: 'clamp(660px, 160vw, 1320px)' }}
       >
         <Image
-          src="/elephant.png"
+          src="/elephant.webp"
           alt=""
-          width={1024}
+          width={1536}
           height={1024}
           priority
-          style={{ width: '100%', height: 'auto', display: 'block' }}
+          sizes="(max-width: 412px) 660px, (max-width: 825px) 160vw, 1320px"
+          className="block h-auto w-full"
           aria-hidden="true"
         />
       </div>
@@ -46,17 +27,10 @@ export default function Hero() {
         aria-hidden="true"
         viewBox="0 0 1200 80"
         preserveAspectRatio="xMidYMid slice"
-        style={{
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          width: '100%',
-          height: 'clamp(80px, 12vh, 140px)',
-          zIndex: 0,
-          pointerEvents: 'none',
-        }}
+        className="pointer-events-none absolute bottom-0 left-0 z-0 w-full"
+        style={{ height: 'clamp(80px, 12vh, 140px)' }}
       >
-        {/* Two layered water lines */}
+        {/* Three layered water lines */}
         <path
           d="M0 40 Q150 20 300 40 T600 40 T900 40 T1200 40"
           fill="none"
@@ -92,56 +66,51 @@ export default function Hero() {
         </g>
       </svg>
 
-      {/* Hero content — CSS animation, no Framer Motion initial opacity */}
-      <div
-        className="hero-content"
-        style={{
-          position: 'relative',
-          zIndex: 10,
-          width: '100%',
-          maxWidth: '1280px',
-          margin: '0 auto',
-          padding: '0 clamp(20px, 5vw, 32px)',
-        }}
-      >
+      {/* Hero content */}
+      <div className="hero-content relative z-10 mx-auto w-full max-w-[1280px] px-[clamp(20px,5vw,32px)]">
         <h1
-          className="hero-name"
-          style={{
-            fontFamily: 'var(--font-nunito), "Nunito Sans", sans-serif',
-            fontWeight: 800,
-            color: '#0F0F0F',
-            lineHeight: 1,
-            letterSpacing: '-0.03em',
-            fontSize: 'clamp(44px, 10vw, 112px)',
-            margin: 0,
-          }}
+          className="hero-name m-0 font-heading font-extrabold leading-none tracking-[-0.03em] text-dark"
+          style={{ fontSize: 'clamp(44px, 10vw, 112px)' }}
         >
-          <span style={{ display: 'block' }}>Gopikrishnan</span>
-          <span style={{ display: 'block' }}>
-            Balagopal
-            <span
-              className="cursor-blink"
-              style={{ color: '#00E87A', marginLeft: '0.15em', fontWeight: 800 }}
-            >
+          <span className="block">{content.name.first}</span>
+          <span className="block">
+            {content.name.last}
+            <span className="cursor-blink ml-[0.15em] text-green" aria-hidden="true">
               |
             </span>
           </span>
         </h1>
 
-        <p
-          className="hero-subtitle"
-          style={{
-            marginTop: '1.5rem',
-            fontFamily: 'var(--font-nunito), "Nunito Sans", sans-serif',
-            fontWeight: 800,
-            color: '#00E87A',
-            fontSize: 'clamp(16px, 2.2vw, 22px)',
-          }}
-        >
-          Full-stack developer · Kerala, India
-        </p>
-      </div>
+        <div className="hero-subtitle">
+          <p
+            className="mt-6 font-heading font-extrabold text-green-ink"
+            style={{ fontSize: 'clamp(16px, 2.2vw, 22px)' }}
+          >
+            {content.tagline}
+          </p>
+          <p className="mt-2 max-w-md text-muted" style={{ fontSize: 'clamp(15px, 1.4vw, 17px)' }}>
+            {content.intro}
+          </p>
 
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a
+              href="#projects"
+              className="rounded-full border-2 border-dark bg-dark px-6 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:border-green hover:bg-green hover:text-dark"
+            >
+              View work
+            </a>
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cursor-label="open"
+              className="rounded-full border-2 border-dark bg-white/80 px-6 py-3 text-sm font-semibold text-dark transition-colors duration-200 hover:bg-dark hover:text-white"
+            >
+              Resume
+            </a>
+          </div>
+        </div>
+      </div>
     </section>
   )
 }

@@ -53,7 +53,7 @@ export default function SectionHeading({
       }}
     >
       <h2
-        className={`font-heading font-bold text-[#0F0F0F] ${className}`}
+        className={`font-heading font-bold text-dark ${className}`}
         style={{
           fontSize: 'clamp(32px, 5vw, 48px)',
           lineHeight: 1.1,

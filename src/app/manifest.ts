@@ -5,11 +5,11 @@ export default function manifest(): MetadataRoute.Manifest {
     name: 'Gopikrishnan Balagopal — Full-stack Developer',
     short_name: 'GB',
     description:
-      'Kerala-based full-stack developer. WebRTC, payments, Go APIs, Next.js, Web3.',
+      'Kerala-based full-stack developer. Calling, payments, support tooling, Go APIs, Next.js.',
     start_url: '/',
     display: 'minimal-ui',
     background_color: '#ffffff',
-    theme_color: '#00E87A',
+    theme_color: '#ffffff',
     icons: [
       {
         src: '/icon',

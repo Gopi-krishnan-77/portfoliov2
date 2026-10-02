@@ -4,19 +4,19 @@ import './globals.css'
 
 const nunitoSans = Nunito_Sans({
   subsets: ['latin'],
-  weight: ['300', '400', '600', '700', '800'],
+  weight: ['400', '600', '700', '800'],
   variable: '--font-nunito',
   display: 'swap',
 })
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+  weight: ['300', '400', '500', '600', '700'],
   variable: '--font-jakarta',
   display: 'swap',
 })
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
-  weight: ['500', '700'],
+  weight: ['500', '600', '700'],
   variable: '--font-mono',
   display: 'swap',
 })
@@ -24,7 +24,7 @@ const jetbrainsMono = JetBrains_Mono({
 const SITE_URL = 'https://gopikrishnanb.co.in'
 const TITLE = 'Gopikrishnan Balagopal — Full-stack Developer'
 const DESCRIPTION =
-  'Kerala-based full-stack developer building products end to end — WebRTC calling systems, payment flows, carbon platforms, and Web3. Currently at Cooee.'
+  'Kerala-based full-stack developer building products end to end — calling, payments, real-time support chat and Web3. Currently at Cooee.'
 
 export const metadata: Metadata = {
   title: {
@@ -54,7 +54,6 @@ export const metadata: Metadata = {
     'TypeScript',
     'React',
     'Solidity',
-    'Telnyx',
     'Stripe',
   ],
   category: 'technology',
@@ -88,10 +87,8 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-    { media: '(prefers-color-scheme: dark)', color: '#0F0F0F' },
-  ],
+  // The site is light-only — a dark theme colour would paint Safari's toolbar black over a white page
+  themeColor: '#ffffff',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
@@ -154,7 +151,7 @@ export default function RootLayout({
       lang="en"
       className={`${nunitoSans.variable} ${plusJakarta.variable} ${jetbrainsMono.variable}`}
     >
-      <body className="font-sans antialiased bg-white text-[#0F0F0F]">
+      <body className="font-sans antialiased bg-white text-dark">
         {children}
 
         {/* Structured data — Person + WebSite */}

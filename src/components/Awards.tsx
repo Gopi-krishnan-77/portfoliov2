@@ -4,54 +4,40 @@ import SectionHeading from './SectionHeading'
 
 export default function Awards() {
   return (
-    <section className="relative bg-white py-20 md:py-32 overflow-hidden">
+    <section id="awards" className="relative bg-white py-20 md:py-32 overflow-hidden">
       {/* Snake boat — large desktop only (xl+), right centre */}
       <div
-        className="hidden xl:block absolute pointer-events-none select-none"
-        style={{
-          top: '50%',
-          right: '-2%',
-          transform: 'translateY(-50%)',
-          width: 'clamp(320px, 42vw, 600px)',
-          zIndex: 0,
-        }}
+        className="pointer-events-none absolute right-[-2%] top-1/2 z-0 hidden -translate-y-1/2 select-none xl:block"
+        style={{ width: 'clamp(320px, 42vw, 600px)' }}
       >
-        <div
-          className="side-float-fast"
-          style={{
-            opacity: 1,
-            mixBlendMode: 'multiply',
-            filter: 'brightness(1.22) contrast(1.4)',
-          }}
-        >
-          <Image src="/boat.png" alt="" width={1536} height={1024} className="w-full h-auto" aria-hidden="true" />
+        <div className="side-float-fast">
+          <Image
+            src="/boat.webp"
+            alt=""
+            width={1536}
+            height={1024}
+            sizes="600px"
+            className="h-auto w-full"
+            aria-hidden="true"
+          />
         </div>
       </div>
 
-      <div
-        className="relative mx-auto"
-        style={{ zIndex: 1, maxWidth: '1280px', padding: '0 clamp(20px, 5vw, 32px)' }}
-      >
+      <div className="relative z-[1] mx-auto max-w-[1280px] px-[clamp(20px,5vw,32px)]">
         <SectionHeading>Recognition</SectionHeading>
 
         <div className="flex flex-col gap-5 max-w-2xl">
           {content.awards.map((award) => (
             <div
               key={award.title}
-              className="flex items-start gap-5 bg-white border-l-4 rounded-xl shadow-sm px-6 py-5"
-              style={{ borderLeftColor: '#00E87A' }}
+              className="flex items-start gap-5 rounded-xl border-l-4 border-green bg-white px-6 py-5 shadow-sm"
             >
-              <span className="text-3xl flex-shrink-0 mt-0.5">{award.icon}</span>
+              <span className="mt-0.5 flex-shrink-0 text-3xl" aria-hidden="true">{award.icon}</span>
               <div>
-                <h3 className="font-heading font-bold text-[#0F0F0F] text-lg leading-snug">
+                <h3 className="font-heading text-lg font-bold leading-snug text-dark">
                   {award.title}
                 </h3>
-                <p
-                  className="mt-1 text-sm text-[#6b7b6c]"
-                  style={{ fontFamily: 'var(--font-jakarta)' }}
-                >
-                  {award.sub}
-                </p>
+                <p className="mt-1 text-sm text-subtle">{award.sub}</p>
               </div>
             </div>
           ))}

@@ -16,12 +16,12 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <section id="about"><About /></section>
-        <section id="experience"><Experience /></section>
-        <section id="projects"><Projects /></section>
+        <About />
+        <Experience />
+        <Projects />
         <Stack />
-        <section id="awards"><Awards /></section>
-        <section id="contact"><Contact /></section>
+        <Awards />
+        <Contact />
       </main>
       <Footer />
     </>

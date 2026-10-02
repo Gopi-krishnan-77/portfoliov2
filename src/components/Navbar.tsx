@@ -1,6 +1,14 @@
 'use client'
 import { useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
+
+const navLinks = [
+  { label: 'About', href: '#about' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Resume', href: '/resume.pdf', external: true },
+]
+
+const externalProps = { target: '_blank', rel: 'noopener noreferrer' }
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -8,109 +16,90 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 80)
-    window.addEventListener('scroll', handleScroll)
+    handleScroll()
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const navLinks = [
-    { label: 'Projects', href: '#projects' },
-    { label: 'Experience', href: '#experience' },
-    { label: 'About', href: '#about' },
-    { label: 'Resume', href: '/resume.pdf', external: true },
-  ]
+  useEffect(() => {
+    if (!menuOpen) return
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setMenuOpen(false)
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [menuOpen])
+
+  // Solid background whenever the menu is open, so it never floats over the hero
+  const solid = scrolled || menuOpen
 
   return (
-    <motion.header
-      className="fixed top-0 left-0 right-0 transition-all duration-300"
-      style={{
-        zIndex: 50,
-        backgroundColor: scrolled ? 'rgba(255,255,255,0.95)' : 'transparent',
-        boxShadow: scrolled ? '0 1px 24px rgba(0,0,0,0.08)' : 'none',
-        backdropFilter: scrolled ? 'blur(12px)' : 'none',
-        WebkitBackdropFilter: scrolled ? 'blur(12px)' : 'none',
-      }}
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        solid ? 'bg-white/95 shadow-[0_1px_24px_rgba(0,0,0,0.08)] backdrop-blur-md' : 'bg-transparent'
+      }`}
     >
-      <nav
-        className="max-w-[1280px] mx-auto flex items-center justify-between"
-        style={{ padding: '0 32px', height: '72px' }}
-      >
+      <nav className="mx-auto flex h-[72px] max-w-[1280px] items-center justify-between px-[clamp(20px,5vw,32px)]">
         {/* Logo */}
         <a
           href="#"
-          className="font-heading font-bold select-none"
-          style={{ fontSize: '1.25rem', color: '#0F0F0F', textDecoration: 'none', letterSpacing: '-0.02em' }}
+          className="select-none font-heading text-xl font-bold tracking-[-0.02em] text-dark"
+          aria-label="Back to top"
         >
           GB.
         </a>
 
         {/* Desktop nav */}
-        <div className="hidden md:flex items-center" style={{ gap: '2rem' }}>
+        <div className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-              className="font-sans font-medium transition-colors duration-200"
-              style={{ fontSize: '0.875rem', color: '#0F0F0F', textDecoration: 'none' }}
-              onMouseEnter={e => (e.currentTarget.style.color = '#00E87A')}
-              onMouseLeave={e => (e.currentTarget.style.color = '#0F0F0F')}
+              {...(link.external ? externalProps : {})}
+              className="text-sm font-medium text-dark transition-colors duration-200 hover:text-green-ink"
             >
               {link.label}
             </a>
           ))}
           <a
             href="#contact"
-            className="font-sans font-semibold transition-all duration-200"
-            style={{
-              fontSize: '0.875rem',
-              color: '#ffffff',
-              backgroundColor: '#0F0F0F',
-              padding: '0.5rem 1.25rem',
-              borderRadius: '9999px',
-              textDecoration: 'none',
-            }}
-            onMouseEnter={e => {
-              const el = e.currentTarget as HTMLAnchorElement
-              el.style.backgroundColor = '#00E87A'
-              el.style.color = '#0F0F0F'
-            }}
-            onMouseLeave={e => {
-              const el = e.currentTarget as HTMLAnchorElement
-              el.style.backgroundColor = '#0F0F0F'
-              el.style.color = '#ffffff'
-            }}
+            className="rounded-full bg-dark px-5 py-2 text-sm font-semibold text-white transition-all duration-200 hover:bg-green hover:text-dark"
           >
             Connect
           </a>
         </div>
 
-        {/* Mobile hamburger */}
+        {/* Mobile hamburger — 44px tap target */}
         <button
-          className="md:hidden flex flex-col gap-1.5 p-1"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
+          type="button"
+          className="-mr-2.5 flex h-11 w-11 flex-col items-center justify-center gap-1.5 md:hidden"
+          onClick={() => setMenuOpen((open) => !open)}
+          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
         >
           <span
-            className={`block w-6 h-0.5 bg-[#0F0F0F] transition-all duration-200 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`}
+            className={`block h-0.5 w-6 bg-dark transition-all duration-200 ${menuOpen ? 'translate-y-2 rotate-45' : ''}`}
           />
           <span
-            className={`block w-6 h-0.5 bg-[#0F0F0F] transition-all duration-200 ${menuOpen ? 'opacity-0' : ''}`}
+            className={`block h-0.5 w-6 bg-dark transition-all duration-200 ${menuOpen ? 'opacity-0' : ''}`}
           />
           <span
-            className={`block w-6 h-0.5 bg-[#0F0F0F] transition-all duration-200 ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`}
+            className={`block h-0.5 w-6 bg-dark transition-all duration-200 ${menuOpen ? '-translate-y-2 -rotate-45' : ''}`}
           />
         </button>
       </nav>
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-white border-t border-[#E8E4DF] px-5 py-6 flex flex-col gap-4">
+        <div
+          id="mobile-menu"
+          className="flex flex-col border-t border-grey bg-white px-[clamp(20px,5vw,32px)] pb-6 pt-2 md:hidden"
+        >
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-              className="text-[#0F0F0F] font-medium text-base"
+              {...(link.external ? externalProps : {})}
+              className="flex min-h-11 items-center text-base font-medium text-dark"
               onClick={() => setMenuOpen(false)}
             >
               {link.label}
@@ -118,13 +107,13 @@ export default function Navbar() {
           ))}
           <a
             href="#contact"
-            className="bg-[#0F0F0F] text-white text-sm font-semibold px-5 py-3 rounded-full text-center"
+            className="mt-3 rounded-full bg-dark px-5 py-3 text-center text-sm font-semibold text-white"
             onClick={() => setMenuOpen(false)}
           >
             Connect
           </a>
         </div>
       )}
-    </motion.header>
+    </header>
   )
 }

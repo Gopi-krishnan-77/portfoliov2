@@ -1,7 +1,8 @@
 export const content = {
   name: { first: 'Gopikrishnan', last: 'Balagopal' },
   tagline: 'Full-stack developer · Kerala, India',
-  bio: '23. Kerala-based. I build products end to end — WebRTC calling systems, payment flows, carbon platforms, migration pipelines. I care about shipping things that actually work.',
+  intro: 'I turn messy product problems into features that just work. Currently building at Cooee.',
+  bio: "23, based in Kerala. I'm a full-stack engineer at Cooee, working across calling, payments and customer support — mostly Go on the backend and React on the front. I like owning a feature from the first API question to the deploy, and shipping things that actually work.",
   email: 'gopikrishnanb2003@gmail.com',
   github: 'https://github.com/Gopi-krishnan-77',
   linkedin: 'https://linkedin.com/in/gopikrishnanbalagopal',
@@ -13,13 +14,12 @@ export const content = {
       period: 'Sept 2025 – Present',
       current: true,
       bullets: [
-        'Engineered production-grade international calling flows using WebRTC, socket signaling, and Telnyx for global users',
-        'Built international calling, subscription flows, travel data services, and auto top-ups shipped to thousands of users',
-        'Developed backend APIs and services in Go for scalable product integrations',
-        'Owned major frontend modules in React, Next.js, Tailwind, and Firebase',
-        'Led end-to-end migration of internal support system to DevRev — tool evaluation (Gleap vs DevRev), data modelling, API integration design, and migration scripting in Go across PostgreSQL and DevRev\'s REST APIs',
-        'Led WordPress → Next.js migration of marketing website with Sanity CMS, country-specific pages, and SEO improvements',
-        'Implemented GA4 instrumentation across marketing and product surfaces',
+        'Own the Cooee Business web app — onboarding, team management, usage dashboards and payments — from first prototype to live deploy',
+        'Owned our move to a new customer support platform end to end — backend, web app, ticket migration and cutover — with a one-switch rollback if anything goes wrong',
+        'Built in-app support chat with real-time updates, plus agent tooling that puts a customer\'s account and call history in front of support, so issues get resolved faster',
+        'Built calling features — international calling over WebRTC, call forwarding, subscriptions and auto top-ups',
+        'Owned major frontend modules in React, Next.js, Tailwind and Firebase',
+        'Led the marketing site move from WordPress to Next.js with a headless CMS, country-specific pages, SEO improvements and GA4 tracking',
       ],
     },
     {
@@ -68,7 +68,6 @@ export const content = {
         { label: 'MOS Score', value: 4.5, suffix: '', decimals: 1 },
       ],
       cta: { label: 'Visit site →', href: 'https://callcheck.gopikrishnanb.co.in' },
-      style: 'dark',
     },
     {
       id: 'decarb',
@@ -78,7 +77,6 @@ export const content = {
       awards: ['🏆 Finalist — SIGHT 2.0', '🏆 Runner-up — BlockHash LIVE'],
       stack: ['Next.js', 'Solidity', 'Web3Auth', 'Razorpay'],
       github: 'https://github.com/DeCarb-Marketplace',
-      style: 'cream',
     },
     {
       id: 'tedx',
@@ -86,7 +84,6 @@ export const content = {
       description: 'Official TEDx event site — responsive UI and ticketing workflows.',
       stack: ['Next.js', 'Firebase'],
       github: 'https://github.com/basilrari/tedxsaintgits',
-      style: 'white',
     },
     {
       id: 'alerteye',
@@ -94,7 +91,6 @@ export const content = {
       description: 'Real-time driver drowsiness detection using facial landmark detection and OpenCV.',
       stack: ['Python', 'OpenCV'],
       github: 'https://github.com/Gopi-krishnan-77/Alert-Eye',
-      style: 'grey',
     },
     {
       id: 'edufinease',
@@ -103,7 +99,6 @@ export const content = {
       description: 'Financial management system for educational institutions — student fee tracking, payment workflows, and reporting dashboards for admins and parents.',
       stack: ['React', 'Node.js', 'Firebase'],
       github: 'https://github.com/EduFinEase',
-      style: 'mint',
     },
     {
       id: 'kdrama',
@@ -112,7 +107,6 @@ export const content = {
       description: 'Analytics dashboard for Korean drama trends and viewer preferences. Python preprocessing pipelines feeding IBM Cognos visualisations to surface popularity patterns and audience demographics.',
       stack: ['Python', 'IBM Cognos', 'Data Analytics'],
       github: 'https://github.com/Gopi-krishnan-77/ibm-cognos',
-      style: 'violet',
     },
     {
       id: 'deex3',
@@ -121,15 +115,14 @@ export const content = {
       description: 'A DAO platform where researchers publish, peer-review, and collaborate transparently. Solidity smart contracts, IPFS storage, and Web3 wallet integration power a community-driven scientific commons.',
       stack: ['Solidity', 'React', 'Web3', 'IPFS'],
       github: 'https://github.com/orgs/DeEx3-DAO/repositories',
-      style: 'indigo',
     },
   ],
 
   stack: [
-    'React', 'Redux', 'Go', 'WebRTC', 'Telnyx', 'Stripe',
-    'Firebase', 'Auth0', 'Sanity CMS', 'Next.js','JavaScript',
-    'TypeScript', 'Django', 'PostgreSQL', 'Solidity', 'Python',
-    'WebSockets', 'GA4', 'Tailwind CSS', 'Express.js',
+    { group: 'Languages', items: ['Go', 'TypeScript', 'JavaScript', 'Python', 'Solidity'] },
+    { group: 'Frontend', items: ['React', 'Next.js', 'Redux', 'TanStack Query', 'Tailwind CSS'] },
+    { group: 'Backend & data', items: ['Django', 'Express.js', 'PostgreSQL', 'WebSockets', 'WebRTC', 'BigQuery'] },
+    { group: 'Platforms', items: ['Firebase', 'Auth0', 'Stripe', 'AWS Amplify', 'Cloudflare Workers', 'Sanity CMS', 'GA4'] },
   ],
 
   awards: [

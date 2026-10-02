@@ -10,12 +10,20 @@ export default function CustomCursor() {
   const [label, setLabel] = useState<string>('')
   const x = useMotionValue(-100)
   const y = useMotionValue(-100)
-  // Tighter spring for the dot, slightly softer for the larger ring
   const springX = useSpring(x, { stiffness: 600, damping: 32 })
   const springY = useSpring(y, { stiffness: 600, damping: 32 })
 
+  // Track pointer type live — e.g. an iPad gaining or losing a trackpad
   useEffect(() => {
-    setIsDesktop(window.matchMedia('(pointer: fine)').matches)
+    const mq = window.matchMedia('(pointer: fine)')
+    const update = () => setIsDesktop(mq.matches)
+    update()
+    mq.addEventListener('change', update)
+    return () => mq.removeEventListener('change', update)
+  }, [])
+
+  useEffect(() => {
+    if (!isDesktop) return
 
     const move = (e: MouseEvent) => {
       x.set(e.clientX)
@@ -51,9 +59,9 @@ export default function CustomCursor() {
       setLabel('')
     }
 
-    window.addEventListener('mousemove', move)
+    window.addEventListener('mousemove', move, { passive: true })
     return () => window.removeEventListener('mousemove', move)
-  }, [x, y])
+  }, [isDesktop, x, y])
 
   if (!isDesktop) return null
 
