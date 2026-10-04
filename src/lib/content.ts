@@ -70,6 +70,16 @@ export const content = {
       cta: { label: 'Visit site →', href: 'https://callcheck.gopikrishnanb.co.in' },
     },
     {
+      id: 'draftarena',
+      title: 'Draft Arena',
+      subtitle: 'Pick your XI. Settle the debate.',
+      description: 'A head-to-head football drafting game. Two managers snake-draft an all-time XI, on one phone or live online, and an AI judges both squads and calls a winner.',
+      highlights: ['Live rooms with a 60s pick clock', 'Draft rules enforced in Postgres', 'AI verdict in four personalities'],
+      stack: ['Next.js', 'TypeScript', 'Supabase', 'Postgres', 'OpenRouter'],
+      github: 'https://github.com/Gopi-krishnan-77/Draft-arena',
+      cta: { label: 'Play →', href: 'https://draft.gopikrishnanb.co.in' },
+    },
+    {
       id: 'decarb',
       title: 'DeCarb',
       subtitle: 'Carbon credit marketplace',
@@ -99,14 +109,6 @@ export const content = {
       description: 'Financial management system for educational institutions — student fee tracking, payment workflows, and reporting dashboards for admins and parents.',
       stack: ['React', 'Node.js', 'Firebase'],
       github: 'https://github.com/EduFinEase',
-    },
-    {
-      id: 'kdrama',
-      title: 'KDrama Insights',
-      subtitle: 'Data-driven analytics dashboard',
-      description: 'Analytics dashboard for Korean drama trends and viewer preferences. Python preprocessing pipelines feeding IBM Cognos visualisations to surface popularity patterns and audience demographics.',
-      stack: ['Python', 'IBM Cognos', 'Data Analytics'],
-      github: 'https://github.com/Gopi-krishnan-77/ibm-cognos',
     },
     {
       id: 'deex3',

@@ -244,34 +244,70 @@ function AlertEyeCard() {
   )
 }
 
-function KDramaCard() {
-  const proj = getProject('kdrama')
+function DraftArenaCard() {
+  const proj = getProject('draftarena')
   return (
     <div
-      className="card-hover col-span-1 md:col-span-2 rounded-2xl p-5 flex items-start gap-4 min-h-[140px]"
-      style={{ backgroundColor: '#F3EEFB' }}
+      className="card-hover col-span-1 flex min-h-[280px] flex-col justify-between rounded-3xl p-8 md:col-span-2"
+      style={{
+        backgroundColor: '#121C2B',
+        // Top stripe in the app's team colours (manager 1 blue vs manager 2 orange);
+        // as a background it's clipped by the card's rounded corners
+        backgroundImage: 'linear-gradient(to right, #003EC7 50%, #FF5C1A 50%)',
+        backgroundSize: '100% 6px',
+        backgroundRepeat: 'no-repeat',
+      }}
     >
-      {/* Bar chart icon */}
-      <div className="flex-shrink-0 mt-0.5">
-        <svg aria-hidden="true" viewBox="0 0 24 24" className="w-7 h-7" fill="none" stroke="#6D28D9" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <line x1="4" y1="20" x2="4" y2="10" />
-          <line x1="10" y1="20" x2="10" y2="4" />
-          <line x1="16" y1="20" x2="16" y2="14" />
-          <line x1="22" y1="20" x2="22" y2="7" />
-          <line x1="2" y1="20" x2="22" y2="20" />
-        </svg>
+      <div>
+        <span
+          className="mb-4 inline-block rounded-md border px-2 py-0.5 font-mono text-[11px] font-semibold uppercase tracking-wider"
+          style={{ borderColor: '#C3F400', color: '#C3F400' }}
+        >
+          Football · 1v1
+        </span>
+        <h3 className="mb-1 font-heading text-3xl font-extrabold text-white">{proj.title}</h3>
+        <p className="mb-3 font-semibold" style={{ color: '#C3F400' }}>
+          {proj.subtitle}
+        </p>
+        <p className="mb-5 text-sm leading-relaxed text-white/75">{proj.description}</p>
+
+        {proj.highlights && (
+          <ul className="mb-6 grid grid-cols-1 gap-2 sm:grid-cols-3">
+            {proj.highlights.map((h) => (
+              <li key={h} className="rounded-xl bg-white/5 px-3 py-2 text-xs leading-snug text-white/80">
+                {h}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
-      <div className="flex-1 min-w-0">
-        <h3 className="font-heading font-bold text-lg text-dark leading-tight">{proj.title}</h3>
-        <p className="text-muted text-sm leading-relaxed mt-1 mb-3">{proj.description}</p>
-        <div className="flex flex-wrap gap-1.5 mb-2">
+
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-wrap gap-2">
           {proj.stack && proj.stack.map((tech) => (
-            <span key={tech} className="px-2 py-0.5 rounded-full text-[11px] font-mono border border-[#D6BCFA] bg-white text-[#5B21B6]">
+            <span
+              key={tech}
+              className="rounded-full border border-white/15 px-3 py-1 font-mono text-xs text-white/80"
+            >
               {tech}
             </span>
           ))}
         </div>
-        {proj.github && <CodeLink href={proj.github} color="#5B21B6" size={12} />}
+        <div className="flex flex-wrap items-center gap-5">
+          {proj.cta && (
+            <a
+              href={proj.cta.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cursor-label="play"
+              className="font-semibold hover:underline"
+              style={{ color: '#C3F400' }}
+            >
+              {proj.cta.label}
+            </a>
+          )}
+          {proj.github && <CodeLink href={proj.github} color="#C3F400" />}
+        </div>
       </div>
     </div>
   )
@@ -368,11 +404,11 @@ export default function Projects() {
         {/* Bento grid — mobile: 1-col, all tablets (md to xl): 2-col, desktop xl+: 4-col */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
           <CallCheckCard />
+          <DraftArenaCard />
           <DeCarbCard />
           <TEDxCard />
           <AlertEyeCard />
           <EduFinEaseCard />
-          <KDramaCard />
           <DeEx3Card />
         </div>
       </div>
