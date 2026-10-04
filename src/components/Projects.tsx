@@ -124,17 +124,56 @@ function CallCheckCard() {
         ))}
       </div>
 
-      {proj.cta && (
-        <a
-          href={proj.cta.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          data-cursor-label="visit"
-          className="text-green font-semibold hover:underline self-start"
-        >
-          {proj.cta.label}
-        </a>
-      )}
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-wrap gap-2">
+          {proj.stack && proj.stack.map((tech) => (
+            <span key={tech} className="px-3 py-1 rounded-full text-xs font-mono border border-green/40 text-light-green">
+              {tech}
+            </span>
+          ))}
+        </div>
+        <div className="flex flex-wrap items-center gap-5">
+          {proj.cta && (
+            <a
+              href={proj.cta.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cursor-label="visit"
+              className="text-green font-semibold hover:underline"
+            >
+              {proj.cta.label}
+            </a>
+          )}
+          {proj.github && <CodeLink href={proj.github} color="#00E87A" />}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function EarlierWorkCard() {
+  const earlier = content.projects.filter((p) => 'earlier' in p && p.earlier)
+  return (
+    <div className="card-hover col-span-1 md:col-span-2 rounded-3xl p-8 flex flex-col min-h-[280px] bg-white border border-grey">
+      <p className="mb-5 font-mono text-[11px] uppercase tracking-wider text-subtle">Earlier work · college</p>
+      <ul className="flex flex-col divide-y divide-grey">
+        {earlier.map((proj) => (
+          <li key={proj.id} className="flex flex-col gap-1.5 py-4 first:pt-0 last:pb-0 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
+            <div className="min-w-0">
+              <h3 className="font-heading font-bold text-lg text-dark leading-tight">{proj.title}</h3>
+              <p className="text-muted text-sm leading-relaxed mt-0.5">{proj.description}</p>
+              {proj.stack && (
+                <p className="font-mono text-[11px] text-subtle mt-1">{proj.stack.join(' · ')}</p>
+              )}
+            </div>
+            {proj.github && (
+              <span className="flex-shrink-0">
+                <CodeLink href={proj.github} color="#006d36" size={12} />
+              </span>
+            )}
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }
@@ -179,66 +218,6 @@ function DeCarbCard() {
         </div>
 
         {proj.github && <CodeLink href={proj.github} color="#B83A0A" />}
-      </div>
-    </div>
-  )
-}
-
-function TEDxCard() {
-  const proj = getProject('tedx')
-  return (
-    <div
-      className="card-hover col-span-1 rounded-3xl p-6 flex flex-col justify-between min-h-[220px] bg-white border border-grey"
-    >
-      <div>
-        {/* TEDx X icon */}
-        <div className="w-10 h-10 rounded-full flex items-center justify-center mb-4" style={{ backgroundColor: '#E62B1E' }}>
-          <span className="text-white font-extrabold text-lg" aria-hidden="true">X</span>
-        </div>
-        <h3 className="font-heading font-bold text-xl text-dark mb-2">{proj.title}</h3>
-        <p className="text-muted text-sm leading-relaxed mb-4">{proj.description}</p>
-      </div>
-      <div className="flex flex-col gap-3">
-        <div className="flex flex-wrap gap-2">
-          {proj.stack && proj.stack.map((tech) => (
-            <span key={tech} className="px-2 py-0.5 rounded-full text-xs font-mono bg-[#F5F5F5] text-muted">
-              {tech}
-            </span>
-          ))}
-        </div>
-        {proj.github && <CodeLink href={proj.github} color="#0F0F0F" />}
-      </div>
-    </div>
-  )
-}
-
-function AlertEyeCard() {
-  const proj = getProject('alerteye')
-  return (
-    <div
-      className="card-hover col-span-1 rounded-3xl p-6 flex flex-col justify-between min-h-[220px] border border-green"
-      style={{ backgroundColor: '#F5F5F5' }}
-    >
-      <div>
-        {/* Eye icon */}
-        <div className="mb-4">
-          <svg aria-hidden="true" viewBox="0 0 24 24" className="w-10 h-10" fill="none" stroke="#00E87A" strokeWidth="2">
-            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-            <circle cx="12" cy="12" r="3"/>
-          </svg>
-        </div>
-        <h3 className="font-heading font-bold text-xl text-dark mb-2">{proj.title}</h3>
-        <p className="text-muted text-sm leading-relaxed mb-4">{proj.description}</p>
-      </div>
-      <div className="flex flex-col gap-3">
-        <div className="flex flex-wrap gap-2">
-          {proj.stack && proj.stack.map((tech) => (
-            <span key={tech} className="px-2 py-0.5 rounded-full text-xs font-mono border border-green text-green-ink">
-              {tech}
-            </span>
-          ))}
-        </div>
-        {proj.github && <CodeLink href={proj.github} color="#006d36" />}
       </div>
     </div>
   )
@@ -313,77 +292,6 @@ function DraftArenaCard() {
   )
 }
 
-function DeEx3Card() {
-  const proj = getProject('deex3')
-  return (
-    <div
-      className="card-hover col-span-1 md:col-span-2 rounded-2xl p-5 flex items-start gap-4 min-h-[140px] bg-dark-green"
-    >
-      {/* Network nodes icon */}
-      <div className="flex-shrink-0 mt-0.5">
-        <svg aria-hidden="true" viewBox="0 0 24 24" className="w-7 h-7" fill="none" stroke="#00E87A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="12" cy="12" r="2.5" />
-          <circle cx="5" cy="5" r="2" />
-          <circle cx="19" cy="5" r="2" />
-          <circle cx="5" cy="19" r="2" />
-          <circle cx="19" cy="19" r="2" />
-          <line x1="6.5" y1="6.5" x2="10.5" y2="10.5" />
-          <line x1="17.5" y1="6.5" x2="13.5" y2="10.5" />
-          <line x1="6.5" y1="17.5" x2="10.5" y2="13.5" />
-          <line x1="17.5" y1="17.5" x2="13.5" y2="13.5" />
-        </svg>
-      </div>
-      <div className="flex-1 min-w-0">
-        <h3 className="font-heading font-bold text-lg text-white leading-tight">{proj.title}</h3>
-        <p className="text-light-green text-sm leading-relaxed mt-1 mb-3 opacity-90">{proj.description}</p>
-        <div className="flex flex-wrap gap-1.5 mb-2">
-          {proj.stack && proj.stack.map((tech) => (
-            <span key={tech} className="px-2 py-0.5 rounded-full text-[11px] font-mono border border-green text-green">
-              {tech}
-            </span>
-          ))}
-        </div>
-        {proj.github && <CodeLink href={proj.github} color="#00E87A" size={12} />}
-      </div>
-    </div>
-  )
-}
-
-function EduFinEaseCard() {
-  const proj = getProject('edufinease')
-  return (
-    <div
-      className="card-hover col-span-1 md:col-span-2 rounded-3xl p-8 flex flex-col justify-between min-h-[220px]"
-      style={{ backgroundColor: '#E8F7EE' }}
-    >
-      <div>
-        {/* Graduation cap icon */}
-        <div className="mb-4">
-          <svg aria-hidden="true" viewBox="0 0 24 24" className="w-10 h-10" fill="none" stroke="#006d36" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-            <path d="M6 12v5c3 3 9 3 12 0v-5" />
-          </svg>
-        </div>
-        <h3 className="font-heading font-extrabold text-2xl text-dark mb-1">{proj.title}</h3>
-        {proj.subtitle && (
-          <p className="text-green-ink font-semibold mb-3 text-sm">{proj.subtitle}</p>
-        )}
-        <p className="text-muted text-sm leading-relaxed mb-4">{proj.description}</p>
-      </div>
-      <div className="flex flex-col gap-3">
-        <div className="flex flex-wrap gap-2">
-          {proj.stack && proj.stack.map((tech) => (
-            <span key={tech} className="px-3 py-1 rounded-full text-xs font-mono border border-green bg-white text-green-ink">
-              {tech}
-            </span>
-          ))}
-        </div>
-        {proj.github && <CodeLink href={proj.github} color="#006d36" />}
-      </div>
-    </div>
-  )
-}
-
 export default function Projects() {
   return (
     <section id="projects" className="bg-white py-20 md:py-32">
@@ -406,10 +314,7 @@ export default function Projects() {
           <CallCheckCard />
           <DraftArenaCard />
           <DeCarbCard />
-          <TEDxCard />
-          <AlertEyeCard />
-          <EduFinEaseCard />
-          <DeEx3Card />
+          <EarlierWorkCard />
         </div>
       </div>
     </section>
