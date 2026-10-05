@@ -26,22 +26,32 @@ export default function Awards() {
       <div className="relative z-[1] mx-auto max-w-[1280px] px-[clamp(20px,5vw,32px)]">
         <SectionHeading>Recognition</SectionHeading>
 
-        <div className="flex flex-col gap-5 max-w-2xl">
+        <ul className="max-w-2xl border-t border-grey">
           {content.awards.map((award) => (
-            <div
+            <li
               key={award.title}
-              className="flex items-start gap-5 rounded-xl border-l-4 border-green bg-white px-6 py-5 shadow-sm"
+              className="group relative grid grid-cols-[1fr_auto] gap-x-6 gap-y-2 border-b border-grey py-6 md:grid-cols-[110px_1fr_auto]"
             >
-              <span className="mt-0.5 flex-shrink-0 text-3xl" aria-hidden="true">{award.icon}</span>
-              <div>
+              {/* Accent bar — grows in on hover */}
+              <span
+                aria-hidden="true"
+                className="absolute -left-4 top-6 bottom-6 w-[2px] origin-top scale-y-0 rounded-full bg-green transition-transform duration-300 ease-out group-hover:scale-y-100 md:-left-5"
+              />
+              <span className="col-span-2 font-mono text-[11px] font-semibold uppercase tracking-wider text-green-ink md:col-span-1 md:pt-1.5">
+                {award.kind}
+              </span>
+              <div className="transition-transform duration-300 ease-out group-hover:translate-x-1">
                 <h3 className="font-heading text-lg font-bold leading-snug text-dark">
                   {award.title}
                 </h3>
                 <p className="mt-1 text-sm text-subtle">{award.sub}</p>
               </div>
-            </div>
+              <span className="whitespace-nowrap pt-1 font-mono text-xs text-subtle tabular-nums">
+                {award.year}
+              </span>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   )
