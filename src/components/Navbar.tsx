@@ -6,6 +6,7 @@ const navLinks = [
   { label: 'Experience', href: '#experience' },
   { label: 'Projects', href: '#projects' },
   { label: 'Resume', href: '/resume.pdf', external: true },
+  { label: 'Boat ride', href: 'https://ride.gopikrishnanb.co.in', external: true },
 ]
 
 const externalProps = { target: '_blank', rel: 'noopener noreferrer' }

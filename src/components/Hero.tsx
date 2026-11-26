@@ -109,6 +109,15 @@ export default function Hero() {
               Resume
             </a>
           </div>
+          <a
+            href="https://ride.gopikrishnanb.co.in"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-cursor-label="sail"
+            className="mt-5 inline-block text-sm font-semibold text-green-ink underline decoration-2 underline-offset-4 transition-colors duration-200 hover:text-dark"
+          >
+            Or take a boat ride through my work, in 3D →
+          </a>
         </div>
       </div>
     </section>
